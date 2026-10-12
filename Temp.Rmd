@@ -1,0 +1,17 @@
+---
+title: "Temp"
+output: html_document
+---
+
+```{r}
+library(readr)
+library(ggplot2)
+pokemon <- read_csv("pokemon_complete_stats.csv")
+```
+
+```{r fig.width=6}
+hist(pokemon$speed, breaks = seq(0, 255, length.out = 17))
+hist(pokemon$capture_rate, breaks = seq(0, 255, length.out = 17))
+table(pokemon$shape) |> barplot()
+```
+
