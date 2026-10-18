@@ -3,6 +3,7 @@ title: "Project Document"
 output:
   pdf_document: default
   html_document: default
+  md_document: default
 ---
 I am choosing a Pokemon dataset I found on Kaggle ( https://www.kaggle.com/datasets/shreyashautomation/pokemon-stats-dataset ). Originally from PokeAPI created by Paul Hallett (https://pokeapi.co/), the data was taken back in August. The data contains information regarding the Pokemon's attributes like weight, height, and game statistics. It doesn't contain gender information nor how different Pokemon relate to each other. I am an expert because I have been playing Pokemon since I was a kid and know a lot about the inner workings of the games. If I need more data I can get more from PokeAPI.
 
@@ -89,7 +90,7 @@ plot(pokemonNoOutliers$weight_hg, pokemonNoOutliers$speed,
 ```
 
 The correlation comes out to 0.05529087.  
-They are not correlated much at all.  
+They are not correlated much at all. This is a little suprising, I expected there to be a decent number of heavy and slow Pokemon like the rock or steel Pokemon.  
 
 Next I will look at the relationship between weight and capture rate:
 ```{r fig.width=9}
@@ -110,7 +111,7 @@ plot(log(pokemonNoOutliers$weight_hg), pokemonNoOutliers$capture_rate,
 With the log of weight you get a correlation of -0.4222861.  
 The higher the weight the lower the capture rate.  
 The makes sense since the bigger and heavier Pokemon tend to be the stronger versions of their lighter counterparts and thus harder to catch. 
-For example a Pokemon will evolve and that later evolution will often be hevier and be harder to capture.
+For example a Pokemon will evolve and that later evolution will often be heavier and be harder to capture.
 
 Next I will look at speed and capture rate:
 ```{r fig.width=9}
