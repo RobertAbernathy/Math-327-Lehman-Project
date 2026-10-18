@@ -23,7 +23,6 @@ Example Columns:
 
 ```{r}
 library(readr)
-library(ggplot2)
 pokemon <- read_csv("pokemon_complete_stats.csv")
 ```
 
@@ -75,7 +74,7 @@ hist(pokemonNoOutliers$weight_hg, breaks = seq(0, 10000, length.out = 101),
      main="Histogram of Weight", xlab="Weight (dg)", ylab="Count")
 ```
 
-The new mean is 758.4829.  
+The new mean is 759.0593.  
 The new median is 315.  
 The data is skewed right and mostly goes down as weight increases with some small bumps around 2000 and 3000.  
 The best measure of center is the median due to the large skewing.
