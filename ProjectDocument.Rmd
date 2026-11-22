@@ -33,8 +33,9 @@ hist(pokemon$speed, breaks = seq(0, 255, length.out = 33),
 ```
 
 This is the chart for speed. The higher the speed the faster pokemon move in battle.  
-The Mean is 72.  
-The Median is 70.  
+The Mean is `r speedmu<-mean(pokemon$speed); speedmu`.  
+The Confidence interval is `r speedmu-qt(0.975, nrow(pokemon)-1)*sd(pokemon$speed)/sqrt(nrow(pokemon))` to `r speedmu+qt(0.975, nrow(pokemon)-1)*sd(pokemon$speed)/sqrt(nrow(pokemon))`.  
+The Median is `r median(pokemon$speed)`.  
 The data has a very slight rightward skew, but is mostly normal.  
 The best measure of center is the mean, but they are nearly the same.
 
@@ -43,9 +44,10 @@ hist(pokemon$capture_rate, breaks = seq(0, 255, length.out = 33),
      main="Histogram of Capture Rate", xlab="Capture Rate", ylab="Count")
 ```
 
-This is the chart for capture rate. The higher the capture rate the harder a Pokemon is the catch.
-The Mean is 89.11029.  
-The Median is 55.  
+This is the chart for capture rate. The higher the capture rate the harder a Pokemon is the catch.  
+The Mean is `r catchmu<-mean(pokemon$capture_rate); catchmu`.  
+The Confidence interval is `r catchmu-qt(0.975, nrow(pokemon)-1)*sd(pokemon$capture_rate)/sqrt(nrow(pokemon))` to `r catchmu+qt(0.975, nrow(pokemon)-1)*sd(pokemon$capture_rate)/sqrt(nrow(pokemon))`.  
+The Median is `r median(pokemon$capture_rate)`.   
 The data is spaced out with clusters around common values. There are a large amount of Pokemon with a value of 45.
 The data itself is skewed right thanks to the large number of 45s.  
 The best measure of center is the mean due to the spread out nature of the data and the large number of 45s.
@@ -65,8 +67,9 @@ hist(pokemon$weight_hg, breaks = seq(0, 10000, length.out = 101),
 ```
 
 This is the chart for weight.  
-The Mean is 991.06.  
-The Median is 326.  
+The Mean is `r oldweightmu<-mean(pokemon$weight_hg); oldweightmu`.  
+The Confidence interval is `r oldweightmu-qt(0.975, nrow(pokemon)-1)*sd(pokemon$weight_hg)/sqrt(nrow(pokemon))` to `r oldweightmu+qt(0.975, nrow(pokemon)-1)*sd(pokemon$weight_hg)/sqrt(nrow(pokemon))`.  
+The Median is `r median(pokemon$weight_hg)`.  
 The data clearly has outliers. There is a large number of Pokemon with the 10000 dg weight (and one 0 placeholder). These correspond with the "dynamax" Pokemon, where a Pokemon becomes huge and unmeasurably heavy. These should be discarded because every Pokemon has a dynamax form with this same unlisted weight. Also the only dynamax Pokemon that show up in this dataset are the ones who look different when in dynamax form, as opposed to just using their regular appearance scaled up.
 If we remove these the data becomes clearer.
 ```{r fig.width=9}
@@ -75,8 +78,9 @@ hist(pokemonNoOutliers$weight_hg, breaks = seq(0, 10000, length.out = 101),
      main="Histogram of Weight", xlab="Weight (dg)", ylab="Count")
 ```
 
-The new mean is 759.0593.  
-The new median is 315.  
+The Mean is `r newweightmu<-mean(pokemonNoOutliers$weight_hg); newweightmu`.  
+The Confidence interval is `r newweightmu-qt(0.975, nrow(pokemonNoOutliers)-1)*sd(pokemonNoOutliers$weight_hg)/sqrt(nrow(pokemonNoOutliers))` to `r newweightmu+qt(0.975, nrow(pokemonNoOutliers)-1)*sd(pokemonNoOutliers$weight_hg)/sqrt(nrow(pokemonNoOutliers))`.  
+The Median is `r median(pokemonNoOutliers$weight_hg)`.  
 The data is skewed right and mostly goes down as weight increases with some small bumps around 2000 and 3000.  
 The best measure of center is the median due to the large skewing.
 
@@ -89,7 +93,7 @@ plot(pokemonNoOutliers$weight_hg, pokemonNoOutliers$speed,
      main="Weight vs Speed", xlab="Weight (dg)", ylab="Speed")
 ```
 
-The correlation comes out to 0.05529087.  
+The correlation comes out to `r cor(pokemonNoOutliers$weight_hg, pokemonNoOutliers$speed)`.  
 They are not correlated much at all. This is a little suprising, I expected there to be a decent number of heavy and slow Pokemon like the rock or steel Pokemon.  
 
 Next I will look at the relationship between weight and capture rate:
@@ -99,7 +103,7 @@ plot(pokemonNoOutliers$weight_hg, pokemonNoOutliers$capture_rate,
      xlab="Weight (dg)", ylab="Capture rate")
 ```
 
-The correlation is -0.2975353.  
+The correlation is `r cor(pokemonNoOutliers$weight_hg, pokemonNoOutliers$capture_rate)`.  
 The correlation is weak, but is there.  
 Here is the plot with weight logged:
 ```{r fig.width=9}
@@ -108,7 +112,7 @@ plot(log(pokemonNoOutliers$weight_hg), pokemonNoOutliers$capture_rate,
      xlab="log(Weight)", ylab="Capture rate")
 ```
 
-With the log of weight you get a correlation of -0.4222861.  
+With the log of weight you get a correlation of `r cor(log(pokemonNoOutliers$weight_hg), pokemonNoOutliers$capture_rate)`.  
 The higher the weight the lower the capture rate.  
 The makes sense since the bigger and heavier Pokemon tend to be the stronger versions of their lighter counterparts and thus harder to catch. 
 For example a Pokemon will evolve and that later evolution will often be heavier and be harder to capture.
@@ -120,5 +124,5 @@ plot(pokemonNoOutliers$speed, pokemonNoOutliers$capture_rate,
      xlab="Speed", ylab="Capture rate")
 ```
 
-The correlation is -0.399774.  
+The correlation is `r cor(pokemonNoOutliers$speed, pokemonNoOutliers$capture_rate)`.  
 Speed is more strongly correlated to capture rate than linear weight. This makes sense because speed is a more direct measure of a Pokemon's strength.
