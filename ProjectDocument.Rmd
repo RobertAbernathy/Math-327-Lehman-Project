@@ -150,6 +150,6 @@ H1 : mu1 > mu2
 ```{r fig.width=9}
 elecpokemon <- subset(pokemon, pokemon$type_1=="electric"|pokemon$type_2=="electric")
 nonelecpokemon <- subset(pokemon, pokemon$type_1!="electric"&pokemon$type_2!="electric")
-t.test(x=elecpokemon$capture_rate, y=nonelecpokemon$capture_rate, alternative = "greater")
+t.test(x=elecpokemon$speed, y=nonelecpokemon$speed, alternative = "greater")
 ```
 Since the p-value is less than 0.05, we can reject the null hypothesis and say electric type pokemon are faster than non-electric pokemon.
