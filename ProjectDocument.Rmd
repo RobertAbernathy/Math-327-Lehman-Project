@@ -132,7 +132,7 @@ Speed is more strongly correlated to capture rate than linear weight. This makes
    
 ---
    
-I will now do a Hypothesis test. I will test if pokemon with the "bug-wings" and "armor" body shapes are easier to catch than those not in these groups. I will use an alpha of 0.95. The bugs will be sample 1 and the non-bugs sample 2. Remember that higher capture rates mean it is easier to catch.  
+I will now do a Hypothesis test. I will test if pokemon with the "bug-wings" and "armor" body shapes are easier to catch than those not in these groups. I will use an alpha of 0.05. The bugs will be sample 1 and the non-bugs sample 2. Remember that higher capture rates mean it is easier to catch.  
 H0 : mu1 = mu2  
 H1 : mu1 > mu2
 ```{r fig.width=9}
@@ -140,4 +140,16 @@ bugshaped <- subset(pokemon, pokemon$shape=="bug-wings"|pokemon$shape=="armor")
 nonbugshaped <- subset(pokemon, pokemon$shape!="bug-wings"&pokemon$shape!="armor")
 t.test(x=bugshaped$capture_rate, y=nonbugshaped$capture_rate, alternative = "greater")
 ```
-Since the p-value was well below 0.05, we can reject the null hypothesis and say that the bug-shaped pokemon are easier to catch.
+Since the p-value was well below 0.05, we can reject the null hypothesis and say that the bug-shaped pokemon are easier to catch.  
+  
+---
+  
+For a second Hypothesis test. I will test if electric type pokemon are faster than average, using an alpha value of 0.05. Sample 1 will be electric type pokemon and sample 2 will be non-electric type pokemon.
+H0 : mu1 = mu2  
+H1 : mu1 > mu2
+```{r fig.width=9}
+elecpokemon <- subset(pokemon, pokemon$type_1=="electric"|pokemon$type_2=="electric")
+nonelecpokemon <- subset(pokemon, pokemon$type_1!="electric"&pokemon$type_2!="electric")
+t.test(x=elecpokemon$capture_rate, y=nonelecpokemon$capture_rate, alternative = "greater")
+```
+Since the p-value is less than 0.05, we can reject the null hypothesis and say electric type pokemon are faster than non-electric pokemon.
