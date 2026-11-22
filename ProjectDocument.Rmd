@@ -34,7 +34,7 @@ hist(pokemon$speed, breaks = seq(0, 255, length.out = 33),
 
 This is the chart for speed. The higher the speed the faster pokemon move in battle.  
 The Mean is `r speedmu<-mean(pokemon$speed); speedmu`.  
-The Confidence interval is `r speedmu-qt(0.975, nrow(pokemon)-1)*sd(pokemon$speed)/sqrt(nrow(pokemon))` to `r speedmu+qt(0.975, nrow(pokemon)-1)*sd(pokemon$speed)/sqrt(nrow(pokemon))`.  
+The Confidence interval of 95% is `r speedmu-qt(0.975, nrow(pokemon)-1)*sd(pokemon$speed)/sqrt(nrow(pokemon))` to `r speedmu+qt(0.975, nrow(pokemon)-1)*sd(pokemon$speed)/sqrt(nrow(pokemon))`.  
 The Median is `r median(pokemon$speed)`.  
 The data has a very slight rightward skew, but is mostly normal.  
 The best measure of center is the mean, but they are nearly the same.
@@ -46,7 +46,7 @@ hist(pokemon$capture_rate, breaks = seq(0, 255, length.out = 33),
 
 This is the chart for capture rate. The higher the capture rate the harder a Pokemon is the catch.  
 The Mean is `r catchmu<-mean(pokemon$capture_rate); catchmu`.  
-The Confidence interval is `r catchmu-qt(0.975, nrow(pokemon)-1)*sd(pokemon$capture_rate)/sqrt(nrow(pokemon))` to `r catchmu+qt(0.975, nrow(pokemon)-1)*sd(pokemon$capture_rate)/sqrt(nrow(pokemon))`.  
+The Confidence interval of 95% is `r catchmu-qt(0.975, nrow(pokemon)-1)*sd(pokemon$capture_rate)/sqrt(nrow(pokemon))` to `r catchmu+qt(0.975, nrow(pokemon)-1)*sd(pokemon$capture_rate)/sqrt(nrow(pokemon))`.  
 The Median is `r median(pokemon$capture_rate)`.   
 The data is spaced out with clusters around common values. There are a large amount of Pokemon with a value of 45.
 The data itself is skewed right thanks to the large number of 45s.  
@@ -68,7 +68,7 @@ hist(pokemon$weight_hg, breaks = seq(0, 10000, length.out = 101),
 
 This is the chart for weight.  
 The Mean is `r oldweightmu<-mean(pokemon$weight_hg); oldweightmu`.  
-The Confidence interval is `r oldweightmu-qt(0.975, nrow(pokemon)-1)*sd(pokemon$weight_hg)/sqrt(nrow(pokemon))` to `r oldweightmu+qt(0.975, nrow(pokemon)-1)*sd(pokemon$weight_hg)/sqrt(nrow(pokemon))`.  
+The Confidence interval of 95% is `r oldweightmu-qt(0.975, nrow(pokemon)-1)*sd(pokemon$weight_hg)/sqrt(nrow(pokemon))` to `r oldweightmu+qt(0.975, nrow(pokemon)-1)*sd(pokemon$weight_hg)/sqrt(nrow(pokemon))`.  
 The Median is `r median(pokemon$weight_hg)`.  
 The data clearly has outliers. There is a large number of Pokemon with the 10000 dg weight (and one 0 placeholder). These correspond with the "dynamax" Pokemon, where a Pokemon becomes huge and unmeasurably heavy. These should be discarded because every Pokemon has a dynamax form with this same unlisted weight. Also the only dynamax Pokemon that show up in this dataset are the ones who look different when in dynamax form, as opposed to just using their regular appearance scaled up.
 If we remove these the data becomes clearer.
@@ -79,7 +79,7 @@ hist(pokemonNoOutliers$weight_hg, breaks = seq(0, 10000, length.out = 101),
 ```
 
 The Mean is `r newweightmu<-mean(pokemonNoOutliers$weight_hg); newweightmu`.  
-The Confidence interval is `r newweightmu-qt(0.975, nrow(pokemonNoOutliers)-1)*sd(pokemonNoOutliers$weight_hg)/sqrt(nrow(pokemonNoOutliers))` to `r newweightmu+qt(0.975, nrow(pokemonNoOutliers)-1)*sd(pokemonNoOutliers$weight_hg)/sqrt(nrow(pokemonNoOutliers))`.  
+The Confidence interval of 95% is `r newweightmu-qt(0.975, nrow(pokemonNoOutliers)-1)*sd(pokemonNoOutliers$weight_hg)/sqrt(nrow(pokemonNoOutliers))` to `r newweightmu+qt(0.975, nrow(pokemonNoOutliers)-1)*sd(pokemonNoOutliers$weight_hg)/sqrt(nrow(pokemonNoOutliers))`.  
 The Median is `r median(pokemonNoOutliers$weight_hg)`.  
 The data is skewed right and mostly goes down as weight increases with some small bumps around 2000 and 3000.  
 The best measure of center is the median due to the large skewing.
