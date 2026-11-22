@@ -37,6 +37,7 @@ The Mean is `r speedmu<-mean(pokemon$speed); speedmu`.
 The Confidence interval of 95% is `r speedmu-qt(0.975, nrow(pokemon)-1)*sd(pokemon$speed)/sqrt(nrow(pokemon))` to `r speedmu+qt(0.975, nrow(pokemon)-1)*sd(pokemon$speed)/sqrt(nrow(pokemon))`.  
 The Median is `r median(pokemon$speed)`.  
 The data has a very slight rightward skew, but is mostly normal.  
+The confidence interval is a small range so the mean is likely accurate.  
 The best measure of center is the mean, but they are nearly the same.
 
 ```{r fig.width=9}
@@ -50,6 +51,7 @@ The Confidence interval of 95% is `r catchmu-qt(0.975, nrow(pokemon)-1)*sd(pokem
 The Median is `r median(pokemon$capture_rate)`.   
 The data is spaced out with clusters around common values. There are a large amount of Pokemon with a value of 45.
 The data itself is skewed right thanks to the large number of 45s.  
+The confidence interval has a range of about 10, which is relatively small compared to the total range, so the mean is likely accurate.  
 The best measure of center is the mean due to the spread out nature of the data and the large number of 45s.
 
 ```{r fig.width=9}
@@ -82,6 +84,7 @@ The Mean is `r newweightmu<-mean(pokemonNoOutliers$weight_hg); newweightmu`.
 The Confidence interval of 95% is `r newweightmu-qt(0.975, nrow(pokemonNoOutliers)-1)*sd(pokemonNoOutliers$weight_hg)/sqrt(nrow(pokemonNoOutliers))` to `r newweightmu+qt(0.975, nrow(pokemonNoOutliers)-1)*sd(pokemonNoOutliers$weight_hg)/sqrt(nrow(pokemonNoOutliers))`.  
 The Median is `r median(pokemonNoOutliers$weight_hg)`.  
 The data is skewed right and mostly goes down as weight increases with some small bumps around 2000 and 3000.  
+The new confidence interval is wider with a range of about 200, but relative to the size of the data I would say it is a decently likely to be accurate to the mean.  
 The best measure of center is the median due to the large skewing.
 
 
